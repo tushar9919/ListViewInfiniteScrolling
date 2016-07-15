@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behavior="clr-namespace:ListViewScrolling;assembly=ListViewScrolling"
+             x:Class="ListViewScrolling.Mainpage" Title="List view scrolling">
+    <ContentPage.Content>
+
+      <ListView ItemsSource="{Binding Data}" WidthRequest="300" IsPullToRefreshEnabled="True" RefreshCommand="{Binding LoadCommand}"
+                IsRefreshing="{Binding IsProcessing}">
+        <ListView.Behaviors>
+          <behavior:ListViewBehavior PageIndex="{Binding PageIndex}" Command="{Binding LoadCommand}">
+          </behavior:ListViewBehavior>
+        </ListView.Behaviors>
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <TextCell Text="{Binding .}" TextColor="White"></TextCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+
+    </ContentPage.Content>
+</ContentPage>
